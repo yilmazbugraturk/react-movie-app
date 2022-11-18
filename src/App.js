@@ -49,7 +49,12 @@ function App() {
   };
 
   const addFavoriteMovie = (movie) => {
-    const newFavourites = [...favourites, movie];
+    let newFavourites;
+    if (favourites == null) {
+      newFavourites = [movie];
+    } else {
+      newFavourites = [...favourites, movie];
+    }
     setFavourites(newFavourites);
     saveToLS(newFavourites);
   };
