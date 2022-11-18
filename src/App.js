@@ -22,8 +22,14 @@ function App() {
 
     const responseJSON = await response.json();
 
+    //Check api response
+    if (responseJSON.Response == "True") {
     if (responseJSON.Search) {
       setMovies(responseJSON.Search);
+    }
+    } else {
+      //There was error
+      console.log(`There was an error: ${responseJSON.Error}`);
     }
   };
 
