@@ -24,9 +24,9 @@ function App() {
 
     //Check api response
     if (responseJSON.Response == "True") {
-    if (responseJSON.Search) {
-      setMovies(responseJSON.Search);
-    }
+      if (responseJSON.Search) {
+        setMovies(responseJSON.Search);
+      }
     } else {
       //There was error
       console.log(`There was an error: ${responseJSON.Error}`);
@@ -71,22 +71,19 @@ function App() {
     <div className="container-fluid movies-container">
       <div className="row d-flex align-items-center mt-4 mb-4">
         <Heading heading="Movie App" />
-        <Icons/>
+        <Icons />
       </div>{" "}
       <div className="row filters d-flex align-items-center">
         <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row search-results">
-        <Movies
-          movies={movies}
-          keepFavouritesClick={addFavoriteMovie}
-        />
+        <Movies movies={movies} keepFavouritesClick={addFavoriteMovie} />
       </div>
-	    <ShowFavourites  
-          movies={favourites}
-          keepFavouritesClick={removeFavouriteMovie}
-          favourite={RemoveFavourites}
-        />
+      <ShowFavourites
+        movies={favourites}
+        keepFavouritesClick={removeFavouriteMovie}
+        favourite={RemoveFavourites}
+      />
     </div>
   );
 }
