@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./App.css";
 import Movies from "./components/Movies";
 import Heading from "./components/Heading";
 import Icons from "./components/IconList";
 import SearchBar from "./components/SearchBar";
+import ShowFavourites from "./components/ShowFavourites";
 import AddFavourites from "./components/AddFavourites";
 import RemoveFavourites from "./components/RemoveFavourites";
 
@@ -54,11 +56,6 @@ function App() {
     saveToLS(newFavoriteList);
   };
 
-  const show_favourites = () => {
-    var favourites_icon = document.getElementsByClassName('icon-favourites')[0];
-    favourites_icon.style.display = "block";
-  }
-
   return (
     <div className="container-fluid movies-container">
       <div className="row d-flex align-items-center mt-4 mb-4">
@@ -72,19 +69,13 @@ function App() {
         <Movies
           movies={movies}
           keepFavouritesClick={addFavoriteMovie}
-          favourite={AddFavourites}
         />
       </div>
-      <div className="row d-flex align-items-center justify-content-sb mt-4 mb-4">
-        <Heading heading="Favourites" />
-      </div>
-      <div className="row favourites">
-        <Movies
+	    <ShowFavourites  
           movies={favourites}
           keepFavouritesClick={removeFavouriteMovie}
           favourite={RemoveFavourites}
         />
-      </div>
     </div>
   );
 }
