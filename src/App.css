@@ -1,15 +1,19 @@
-.App {
-  text-align: center;
+body {
+  background-color: rgb(43, 24, 24);
+  color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movies-container > .row {
+  overflow-y: auto;
+  flex-wrap: nowrap;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.movies-container > .search-results {
+  overflow-y: hidden;
+  flex-wrap: wrap;
+  padding: 0;
+  justify-content: space-between;
   }
 }
 
