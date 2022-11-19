@@ -59,7 +59,7 @@ body {
   width: auto;
 }
 
-.icon-favourites svg {
+.icon-favourites svg, .icon-watched svg {
 	cursor: pointer;
 }
 
