@@ -51,6 +51,10 @@ body {
   text-align: center;
 }
 
+.movies-overlay {
+  width: 92.2%;
+}
+
 .icons {
   width: auto;
 }
