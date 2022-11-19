@@ -1,6 +1,6 @@
 body {
-  background-color: rgb(43, 24, 24);
-  color: white;
+  background-color: #001219;
+  color: #ffffff;
 }
 
 .movies-container > .row {
@@ -52,4 +52,9 @@ body {
 
 .icon-favourites svg {
 	cursor: pointer;
+}
+
+.favourites-title {
+  color:#001219;
+  text-align: center;
 }
