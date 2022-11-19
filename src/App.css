@@ -26,6 +26,11 @@ body {
   transition: transform 0.2s;
 }
 
+.image-container img {
+  width: 100%;
+  height: 400px;
+}
+
 .image-container:hover {
   cursor: pointer;
   transform: scale(1.1);
