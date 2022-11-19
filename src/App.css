@@ -16,7 +16,6 @@ body {
   justify-content: space-between;
 }
 
-
 .auto-w {
   width: auto;
 }
@@ -25,6 +24,7 @@ body {
   position: relative;
   transition: transform 0.2s;
 }
+
 
 .image-container img {
   width: 100%;
@@ -64,6 +64,20 @@ body {
 }
 
 .favourites-title {
-  color:#001219;
   text-align: center;
+  padding-left: 16px;
+  padding-top: 5px;
+}
+
+.favourites-container {
+  max-width: 80%;
+}
+.favourites-containerpart {
+  background-color: #fca311;
+  color:#001219;
+  margin: -1px;
+}
+
+.favourites-close-button {
+  background-color: #001219;
 }
