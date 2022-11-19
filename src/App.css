@@ -43,7 +43,7 @@ body {
 .img-overlay {
   position: absolute;
   background-color: rgb(0, 0, 0, 0.8);
-  width: 92.5%;
+  width: 100%;
   transition: ease 0.5s;
   opacity: 0;
   font-size: 18px;
