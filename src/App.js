@@ -7,12 +7,14 @@ import Heading from "./components/Heading";
 import Icons from "./components/IconList";
 import SearchBar from "./components/SearchBar";
 import ShowFavourites from "./components/ShowFavourites";
+import WatchedOnes from "./components/ShowWatched";
 import AddFavourites from "./components/AddFavourites";
 import RemoveFavourites from "./components/RemoveFavourites";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  const [watched, setWatched] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   const getMovieRequestByTitle = async (searchValue) => {
@@ -44,9 +46,20 @@ function App() {
     setFavourites(favouriteMovies);
   }, []);
 
+  useEffect(() => {
+    const watchedMovies = JSON.parse(
+      localStorage.getItem("movie-app-watched")
+    );
+    setWatched(watchedMovies);
+  }, []);
+
   const saveToLS = (items) => {
     localStorage.setItem("movie-app-favourites", JSON.stringify(items));
   };
+
+  const saveToLSAlreadyWatched = (items) => {
+    localStorage.setItem("movie-app-watched", JSON.stringify(items));
+  } 
 
   const addFavoriteMovie = (movie) => {
     let newFavourites;
@@ -57,6 +70,16 @@ function App() {
     }
     setFavourites(newFavourites);
     saveToLS(newFavourites);
+  };
+  const addWatched = (movie) => {
+    let newWatched;
+    if (watched == null) {
+      newWatched = [movie];
+    } else {
+      newWatched = [...favourites, movie];
+    }
+    setWatched(newWatched);
+    saveToLSAlreadyWatched(newWatched);
   };
 
   const removeFavouriteMovie = (movie) => {
@@ -77,12 +100,21 @@ function App() {
         <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row search-results">
-        <Movies movies={movies} keepFavouritesClick={addFavoriteMovie} />
+        <Movies
+          movies={movies}
+          keepFavouritesClick={addFavoriteMovie}
+          keepWatchedClick={addWatched}
+          favourite={AddFavourites}
+        />
       </div>
       <ShowFavourites
         movies={favourites}
         keepFavouritesClick={removeFavouriteMovie}
         favourite={RemoveFavourites}
+      />
+      <WatchedOnes
+        movies={movies}
+        watched={WatchedOnes}
       />
     </div>
   );
