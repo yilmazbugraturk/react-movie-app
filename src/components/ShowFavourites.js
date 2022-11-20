@@ -9,7 +9,7 @@ const Favourites = (props) => {
           className="modal fade"
           id="myFavourites"
           tabIndex="-1"
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="FavouritesModalLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-scrollable favourites-container">
@@ -39,6 +39,40 @@ const Favourites = (props) => {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="modal-footer favourites-containerpart">
+                <button
+                  type="button"
+                  className="btn btn-dark favourites-close-button"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div
+          className="modal fade"
+          id="myFavourites"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-dialog-scrollable favourites-container">
+            <div className="modal-content ">
+              <div className="modal-header favourites-containerpart ml-3">
+                <h1 className="modal-title fs-5 favourites-title">
+                  Favourites
+                </h1>
+              </div>
+              <div className="modal-body d-flex flex-row flex-wrap justify-content-between favourites-containerpart">
+                <p className="no-favourites"> There isn't any favourites yet! :(</p>
               </div>
               <div className="modal-footer favourites-containerpart">
                 <button
