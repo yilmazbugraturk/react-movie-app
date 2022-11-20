@@ -3,12 +3,12 @@ body {
   color: #ffffff;
 }
 
-.movies-container > .row {
+/* .movies-container > .row {
   overflow-y: auto;
   flex-wrap: nowrap;
   padding: 0;
 }
-
+ */
 .movies-container > .search-results {
   overflow-y: hidden;
   flex-wrap: wrap;

@@ -2,8 +2,8 @@ import React from "react";
 
 const Movies = (props) => {
   const Favourite = props.favourite;
+
   if (Array.isArray(props.movies) && props.movies.length > 0) {
-    //Don't forget to remove the items without an image
     return (
       <>
         {props.movies.map((movie, i) => (
