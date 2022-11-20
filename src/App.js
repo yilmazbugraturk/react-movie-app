@@ -80,10 +80,11 @@ function App() {
     if (watched == null) {
       newWatched = [movie];
     } else {
-      newWatched = [...favourites, movie];
+      newWatched = [...watched, movie];
     }
     setWatched(newWatched);
     saveToLSAlreadyWatched(newWatched);
+    console.log(saveToLSAlreadyWatched(newWatched));
   };
 
   const removeFavouriteMovie = (movie) => {
@@ -94,6 +95,13 @@ function App() {
     saveToLS(newFavoriteList);
   };
 
+  const removeWatchedMovie = (movie) => {
+    const newWatchedList = watched.filter(
+      (watched) => watched.imdbID !== movie.imdbID
+    );
+    setWatched(newWatchedList);
+    saveToLSAlreadyWatched(newWatchedList);
+  };
   return (
     <div className="container-fluid movies-container">
       <div className="row d-flex align-items-center mt-4 mb-4">
