@@ -30,7 +30,7 @@ const Movies = (props) => {
                 width="48"
                 height="48"
                 fill="currentColor"
-                class="card-container__is-watched bi bi-eye-fill"
+                className="card-container__is-watched bi bi-eye-fill"
                 viewBox="0 0 16 16"
                 onClick={() => {
                   props.keepWatchedClick(movie);
