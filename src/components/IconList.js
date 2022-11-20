@@ -1,5 +1,4 @@
 import React from "react";
-import Movies from "./Movies";
 
 const Icons = () => {
   return (
@@ -7,7 +6,9 @@ const Icons = () => {
       <div className="icon-favourites">
         <svg
           onClick={() => {
-            document.getElementById("myFavouritesContent").focus();
+            if(document.getElementById("myFavouritesContent")) {
+              document.getElementById("myFavouritesContent").focus();
+            }
           }}
           data-bs-toggle="modal"
           data-bs-target="#myFavourites"
@@ -28,7 +29,9 @@ const Icons = () => {
       <div className="icon-watched">
         <svg
           onClick={() => {
-            document.getElementById("myWatchedContents").focus();
+            if(document.getElementById("myWatchedContents")) {
+              document.getElementById("myWatchedContents").focus();
+            }
           }}
           data-bs-toggle="modal"
           data-bs-target="#myWatchedOnes"
