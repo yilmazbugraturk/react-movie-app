@@ -54,6 +54,40 @@ const ShowWatched = (props) => {
         </div>
       </>
     );
+  } else {
+    return (
+      <>
+        <div
+          className="modal fade"
+          id="myWatchedOnes"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-dialog-scrollable favourites-container">
+            <div className="modal-content ">
+              <div className="modal-header favourites-containerpart ml-3">
+                <h1 className="modal-title fs-5 favourites-title">
+                  Movies Already Seen
+                </h1>
+              </div>
+              <div className="modal-body d-flex flex-row flex-wrap justify-content-between favourites-containerpart">
+                <p className="no-watched">There isn't any watched movies yet! :(</p>
+              </div>
+              <div className="modal-footer favourites-containerpart">
+                <button
+                  type="button"
+                  className="btn btn-dark favourites-close-button"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
   }
 };
 
