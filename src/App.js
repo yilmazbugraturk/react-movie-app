@@ -47,9 +47,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const watchedMovies = JSON.parse(
-      localStorage.getItem("movie-app-watched")
-    );
+    const watchedMovies = JSON.parse(localStorage.getItem("movie-app-watched"));
     setWatched(watchedMovies);
   }, []);
 
@@ -63,7 +61,7 @@ function App() {
 
   const saveToLSAlreadyWatched = (items) => {
     localStorage.setItem("movie-app-watched", JSON.stringify(items));
-  } 
+  };
 
   const addFavoriteMovie = (movie) => {
     let newFavourites;
@@ -102,6 +100,7 @@ function App() {
     setWatched(newWatchedList);
     saveToLSAlreadyWatched(newWatchedList);
   };
+
   return (
     <div className="container-fluid movies-container">
       <div className="row d-flex align-items-center mt-4 mb-4">
