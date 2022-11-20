@@ -81,3 +81,24 @@ body {
 .favourites-close-button {
   background-color: #001219;
 }
+
+.overlay-addFavorites {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.card-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container__is-watched {
+  position: absolute;
+  display: none;
+}
+
+.remove-favourites {
+  color: #ffffff;
+  font-size: 15px;
+}
