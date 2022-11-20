@@ -53,6 +53,10 @@ function App() {
     setWatched(watchedMovies);
   }, []);
 
+  useEffect(() => {
+    document.title = 'Movie App';
+  }, []);
+
   const saveToLS = (items) => {
     localStorage.setItem("movie-app-favourites", JSON.stringify(items));
   };
