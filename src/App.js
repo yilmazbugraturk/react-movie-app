@@ -18,9 +18,13 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [fillByYear, setFillByYear] = useState("");
 
+  //method to get movies by title search
+  //supports filter by year
   const getMovieRequestByTitle = async (searchValue, fillYear) => {
     let url;
+    //check if is to fill by year or not
     if (fillYear) {
+      //add GET y parameter to filter by year
       url = `http://www.omdbapi.com/?apikey=742147d8&s=${searchValue}&type=movie&y=${fillYear}`;
     } else {
       url = `http://www.omdbapi.com/?apikey=742147d8&s=${searchValue}&type=movie`;
@@ -59,6 +63,7 @@ function App() {
     }
   };
 
+  //method to get movies by an id
   const getMovieRequestById = async (searchValue) => {
     const url = `http://www.omdbapi.com/?apikey=742147d8&i=${searchValue}&type=movie`;
 
@@ -102,6 +107,7 @@ function App() {
 
   //set favourites
   useEffect(() => {
+    //load the saved favourites from local storage
     const favouriteMovies = JSON.parse(
       localStorage.getItem("movie-app-favourites")
     );
@@ -110,6 +116,7 @@ function App() {
 
   //set watched
   useEffect(() => {
+    //load the saved watched movies from local storage
     const watchedMovies = JSON.parse(localStorage.getItem("movie-app-watched"));
     setWatched(watchedMovies);
   }, []);

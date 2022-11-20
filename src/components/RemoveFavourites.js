@@ -1,6 +1,7 @@
 import React from "react";
 
 const RemoveFavourites = () => {
+  //return a overlay with the option to remove from the favourites
   return (
     <>
       <span className="m-2 remove-favourites">Remove from favourites </span>

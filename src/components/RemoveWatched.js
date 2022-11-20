@@ -1,6 +1,7 @@
 import React from "react";
 
 const RemoveWatched = (props) => {
+  //return an icon with the option to remove from the watched list
   return (
     <>
       <span className="m-2 remove-favourites">Mark As Unwatched</span>

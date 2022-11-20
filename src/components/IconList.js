@@ -1,6 +1,7 @@
 import React from "react";
 
 const Icons = () => {
+  //returns the icons for opening favourites and watched modals
   return (
     <div className="icons d-flex flex-row align-items-center">
       <div className="icon-favourites">

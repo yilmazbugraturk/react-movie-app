@@ -2,7 +2,9 @@ import React from "react";
 
 const Favourites = (props) => {
   const Favourite = props.favourite;
+  //only loads if there is movies
   if (Array.isArray(props.movies) && props.movies.length > 0) {
+    //returns modal with favourites list
     return (
       <>
         <div

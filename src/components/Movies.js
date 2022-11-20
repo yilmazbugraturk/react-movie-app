@@ -2,8 +2,9 @@ import React from "react";
 
 const Movies = (props) => {
   const Favourite = props.favourite;
-
+  //if there is movies.. this condition prevent map of undefined/null
   if (Array.isArray(props.movies) && props.movies.length > 0) {
+    //returns movie items
     return (
       <>
         {props.movies.map((movie, i) => (

@@ -2,7 +2,9 @@ import React from "react";
 import RemoveWatched from "./RemoveWatched";
 
 const ShowWatched = (props) => {
+  //prevents map of undefined or null
   if (Array.isArray(props.movies) && props.movies.length > 0) {
+    //returns modal with watched list
     return (
       <>
         <div

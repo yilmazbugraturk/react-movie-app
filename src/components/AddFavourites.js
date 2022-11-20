@@ -1,6 +1,7 @@
 import React from "react";
 
 const AddFavourites = () => {
+  //return a overlay with the option to save to the favourites
   return (
     <>
       <span className="overlay-addFavorites">Add to Favourites </span>
