@@ -102,3 +102,9 @@ body {
   color: #ffffff;
   font-size: 15px;
 }
+
+.no-favourites, .no-watched {
+  margin-left: 16px;
+  font-size: 15px;
+  font-weight: 500;
+}
