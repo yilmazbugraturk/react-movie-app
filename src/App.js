@@ -7,7 +7,7 @@ import Heading from "./components/Heading";
 import Icons from "./components/IconList";
 import SearchBar from "./components/SearchBar";
 import ShowFavourites from "./components/ShowFavourites";
-import WatchedOnes from "./components/ShowWatched";
+import ShowWatched from "./components/ShowWatched";
 import AddFavourites from "./components/AddFavourites";
 import RemoveFavourites from "./components/RemoveFavourites";
 
@@ -123,7 +123,7 @@ function App() {
         keepFavouritesClick={removeFavouriteMovie}
         favourite={RemoveFavourites}
       />
-      <WatchedOnes
+      <ShowWatched
         movies={watched}
         watched={removeWatchedMovie}
         keepWatchedClick={addWatched}

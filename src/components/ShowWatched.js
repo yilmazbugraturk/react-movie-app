@@ -1,7 +1,7 @@
 import React from "react";
 import RemoveWatched from "./RemoveWatched";
 
-const WatchedOnes = (props) => {
+const ShowWatched = (props) => {
   if (Array.isArray(props.movies) && props.movies.length > 0) {
     return (
       <>
@@ -9,7 +9,7 @@ const WatchedOnes = (props) => {
           className="modal fade"
           id="myWatchedOnes"
           tabIndex="-1"
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="WatchedModelLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-scrollable favourites-container">
@@ -57,4 +57,4 @@ const WatchedOnes = (props) => {
   }
 };
 
-export default WatchedOnes;
+export default ShowWatched;
