@@ -125,8 +125,9 @@ function App() {
         favourite={RemoveFavourites}
       />
       <WatchedOnes
-        movies={movies}
-        watched={WatchedOnes}
+        movies={watched}
+        watched={removeWatchedMovie}
+        keepWatchedClick={addWatched}
       />
     </div>
   );
