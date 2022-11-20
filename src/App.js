@@ -16,9 +16,15 @@ function App() {
   const [favourites, setFavourites] = useState([]);
   const [watched, setWatched] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [fillByYear, setFillByYear] = useState("");
 
-  const getMovieRequestByTitle = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?apikey=742147d8&s=${searchValue}&type=movie`;
+  const getMovieRequestByTitle = async (searchValue, fillYear) => {
+    let url;
+    if (fillYear) {
+      url = `http://www.omdbapi.com/?apikey=742147d8&s=${searchValue}&type=movie&y=${fillYear}`;
+    } else {
+      url = `http://www.omdbapi.com/?apikey=742147d8&s=${searchValue}&type=movie`;
+    }
 
     const response = await fetch(url);
 
@@ -27,18 +33,74 @@ function App() {
     //Check api response
     if (responseJSON.Response === "True") {
       if (responseJSON.Search) {
+        //even exists just one record, it still returns an array
         setMovies(responseJSON.Search);
       }
+    } else {
+      //hide results if they already existed
+      const searchResults =
+        document.getElementsByClassName("search-results")[0];
+      if (searchResults) {
+        searchResults.style.display = "none";
+      }
+      //clean the year filter if exists
+      const fillYearButton = document.querySelectorAll(
+        ".fill-year-wrapper button"
+      )[0];
+      if (fillYearButton) {
+        if (fillYearButton.getAttribute("data-year")) {
+          fillYearButton.innerHTML = "Select the year";
+          fillYearButton.setAttribute("data-year", "");
+        }
+        fillYearButton.style.display = "none";
+      }
+      //throw error in console
+      console.log(`There was an error: ${responseJSON.Error}`);
+    }
+  };
+
+  const getMovieRequestById = async (searchValue) => {
+    const url = `http://www.omdbapi.com/?apikey=742147d8&i=${searchValue}&type=movie`;
+
+    const response = await fetch(url);
+
+    const responseJSON = await response.json();
+
+    //Check api response
+    if (responseJSON.Response === "True") {
+      setMovies([responseJSON]); //always gets one record. force to be sent as array
     } else {
       //There was error
       console.log(`There was an error: ${responseJSON.Error}`);
     }
   };
 
+  //get movies
   useEffect(() => {
-    getMovieRequestByTitle(searchValue);
-  }, [searchValue]);
+    //get movies by search
+    const currentSearchType = document
+      .getElementById("searchBar")
+      .getAttribute("data-type");
+    if (currentSearchType === "name") {
+      //when the search is a name
+      //check if fill year was defined
+      const getSelectedYear = document
+        .querySelectorAll(".fill-year-wrapper button")[0]
+        .getAttribute("data-year");
+      if (getSelectedYear) {
+        //fill by was is active / it's showing movies of respective year
+        getMovieRequestByTitle(searchValue, getSelectedYear);
+      } else {
+        //fill by year was not active / it's showing all movies
+        getMovieRequestByTitle(searchValue);
+      }
+    } else {
+      //when is by imdb id
+      getMovieRequestById(searchValue);
+    }
+  }, [searchValue, fillByYear]);
 
+  //set favourites
   useEffect(() => {
     const favouriteMovies = JSON.parse(
       localStorage.getItem("movie-app-favourites")
@@ -46,13 +108,15 @@ function App() {
     setFavourites(favouriteMovies);
   }, []);
 
+  //set watched
   useEffect(() => {
     const watchedMovies = JSON.parse(localStorage.getItem("movie-app-watched"));
     setWatched(watchedMovies);
   }, []);
 
+  //set app title
   useEffect(() => {
-    document.title = 'Movie App';
+    document.title = "Movie App";
   }, []);
 
   const saveToLS = (items) => {
@@ -73,6 +137,7 @@ function App() {
     setFavourites(newFavourites);
     saveToLS(newFavourites);
   };
+
   const addWatched = (movie) => {
     let newWatched;
     if (watched == null) {
@@ -108,7 +173,13 @@ function App() {
         <Icons />
       </div>{" "}
       <div className="row filters d-flex align-items-center">
-        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchBar
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          movies={movies}
+          fillByYear={fillByYear}
+          setFillByYear={setFillByYear}
+        />
       </div>
       <div className="row search-results">
         <Movies

@@ -108,3 +108,12 @@ body {
   font-size: 15px;
   font-weight: 500;
 }
+
+/* default: do not show the fill by year */
+.fill-year-wrapper {
+  display: none;
+}
+
+.fill-year-wrapper .dropdown-toggle-split::after {
+    margin-left: 5px;
+}
