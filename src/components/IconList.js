@@ -1,16 +1,11 @@
 import React from "react";
 
 const Icons = () => {
-  //returns the icons for opening favourites and watched modals
+  //returns the icons for opening favourites and watched
   return (
     <div className="icons d-flex flex-row align-items-center">
       <div className="icon-favourites">
         <svg
-          onClick={() => {
-            if(document.getElementById("myFavouritesContent")) {
-              document.getElementById("myFavouritesContent").focus();
-            }
-          }}
           data-bs-toggle="modal"
           data-bs-target="#myFavourites"
           xmlns="http://www.w3.org/2000/svg"
@@ -29,11 +24,6 @@ const Icons = () => {
       |
       <div className="icon-watched">
         <svg
-          onClick={() => {
-            if(document.getElementById("myWatchedContents")) {
-              document.getElementById("myWatchedContents").focus();
-            }
-          }}
           data-bs-toggle="modal"
           data-bs-target="#myWatchedOnes"
           xmlns="http://www.w3.org/2000/svg"
