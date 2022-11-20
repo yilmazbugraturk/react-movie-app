@@ -1,0 +1,17 @@
+.movies-container {
+  .search-results {
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: space-between;
+  }
+}
+
+/* default: do not show the fill by year */
+.fill-year-wrapper {
+  display: none;
+
+  .dropdown-toggle-split::after {
+    margin-left: 5px;
+  }
+}
