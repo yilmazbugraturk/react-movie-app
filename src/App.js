@@ -203,7 +203,7 @@ function App() {
           setFillByYear={setFillByYear}
         />
       </div>
-      <div className="row search-results">
+      <div className="row search-results justify-content-around">
         <Movies
           movies={movies}
           keepFavouritesClick={addFavoriteMovie}

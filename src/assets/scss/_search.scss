@@ -10,8 +10,16 @@
 /* default: do not show the fill by year */
 .fill-year-wrapper {
   display: none;
-
+  padding-left: 7px;
   .dropdown-toggle-split::after {
     margin-left: 5px;
   }
+}
+
+.search-button-group {
+  margin: 0 0px 10px 0px;
+}
+
+.button-searchby-name {
+  margin-right: 20px;
 }

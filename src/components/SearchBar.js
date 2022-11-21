@@ -73,9 +73,9 @@ const SearchBar = (props) => {
   }
 
   return (
-    <div className="col col-sm-4">
+    <div className="col col-sm-4 m-3">
       <div
-        className="btn-group-horizontal"
+        className="btn-group-horizontal d-flex flex-row justify-content-start search-button-group"
         role="group"
         aria-label="Choose search type"
       >
@@ -102,7 +102,7 @@ const SearchBar = (props) => {
             }
           }}
         />
-        <label className="btn btn-outline-danger" htmlFor="search-type-name">
+        <label className="btn btn-outline-danger button-searchby-name" htmlFor="search-type-name">
           Search by Name
         </label>
         <input
@@ -154,7 +154,7 @@ const SearchBar = (props) => {
       >
         <input
           id="searchBar"
-          className="form-control"
+          className="form-control search-by-name"
           data-type="name"
           value={props.value}
           onChange={(e) => {
