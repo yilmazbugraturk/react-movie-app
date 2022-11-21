@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from './exfilm.png';
+import logo from "./exfilm.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./App.css";
@@ -94,14 +94,14 @@ function App() {
   // make a request to API for details of the movies
   const getDetails = async (imdbid) => {
     const url = `http://www.omdbapi.com/?apikey=742147d8&i=${imdbid}&type=movie`;
-  
+
     const response = await fetch(url);
     const responseJSON = await response.json();
     console.log(responseJSON);
     if (responseJSON.Response === "True") {
       setDetails(responseJSON);
     }
-  }
+  };
   //get movies
   useEffect(() => {
     //get movies by search
@@ -129,8 +129,8 @@ function App() {
 
   //get movie details
   useEffect(() => {
-      getDetails(movieDetails.imdbID);
-      setDetails(movieDetails);
+    getDetails(movieDetails.imdbID);
+    setDetails(movieDetails);
   }, [movieDetails]);
 
   //set favourites
@@ -164,19 +164,35 @@ function App() {
 
   const addFavoriteMovie = (movie) => {
     let newFavourites;
+
     if (favourites == null) {
       newFavourites = [movie];
     } else {
-      newFavourites = [...favourites, movie];
+      let repeat = 0;
+      for (let i = 0; i < favourites.length; i++) {
+        if (favourites[i] === movie) {
+          //check if in the local storage, movie exists. if it exists, increase the var repeat.
+          repeat++;
+        }
+      }
+
+      //if movie exists, don't send to local storage.
+      if (repeat > 0) {
+        newFavourites = [...favourites];
+      } else {
+        newFavourites = [...favourites, movie];
+
+        const alert = document.getElementsByClassName(
+          "alert-added-favourites"
+        )[0];
+        alert.style.display = "initial";
+        setTimeout(() => {
+          alert.style.display = "none";
+        }, 4000);
+      }
     }
     setFavourites(newFavourites);
     saveToLS(newFavourites);
-
-    const alert = document.getElementsByClassName("alert-added-favourites")[0];
-    alert.style.display = "initial";
-    setTimeout(() => {
-      alert.style.display = "none";
-    }, 4000);
   };
 
   const addWatched = (movie) => {
@@ -184,15 +200,29 @@ function App() {
     if (watched == null) {
       newWatched = [movie];
     } else {
-      newWatched = [...watched, movie];
+
+      let repeat = 0;
+      for (let i = 0; i < watched.length; i++) {
+        if (watched[i] === movie) {
+          //check if in the local storage, movie exists. if it exists, increase the var repeat.
+          repeat++;
+        }
+      }
+      //if movie exists, don't send to local storage.
+      if (repeat > 0) {
+        newWatched = [...watched];
+      } else {
+        newWatched = [...watched, movie];
+      }
+      const alert = document.getElementsByClassName("alert-added-watched")[0];
+      alert.style.display = "initial";
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 4000);
+
     }
     setWatched(newWatched);
     saveToLSAlreadyWatched(newWatched);
-    const alert = document.getElementsByClassName("alert-added-watched")[0];
-    alert.style.display = "initial";
-    setTimeout(() => {
-      alert.style.display = "none";
-    }, 4000);
   };
 
   const removeFavouriteMovie = (movie) => {
