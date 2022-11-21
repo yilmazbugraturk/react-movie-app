@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from './exfilm.png';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./App.css";
@@ -90,6 +91,7 @@ function App() {
     }
   };
 
+  // make a request to API for details of the movies
   const getDetails = async (imdbid) => {
     const url = `http://www.omdbapi.com/?apikey=742147d8&i=${imdbid}&type=movie`;
   
@@ -216,8 +218,8 @@ function App() {
 
   return (
     <div className="container-fluid movies-container">
-      <div className="row d-flex align-items-center m-1 header-container">
-        <Heading heading="Movie App" />
+      <div className="row d-flex align-items-center m-2 header-container">
+        <Heading heading={logo} />
         <Icons />
       </div>{" "}
       <div className="row filters d-flex align-items-center">
