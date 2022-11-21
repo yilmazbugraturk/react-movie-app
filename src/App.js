@@ -190,7 +190,7 @@ function App() {
 
   return (
     <div className="container-fluid movies-container">
-      <div className="row d-flex align-items-center mt-4 mb-4">
+      <div className="row d-flex align-items-center m-1 header-container">
         <Heading heading="Movie App" />
         <Icons />
       </div>{" "}
