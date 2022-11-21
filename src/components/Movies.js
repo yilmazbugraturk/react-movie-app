@@ -16,7 +16,7 @@ const Movies = (props) => {
         {props.movies.map((movie, i) => (
           <div
             key={i}
-            className="d-flex flex-column justify-content-start m-3 auto-w image-container"
+            className="d-flex flex-column justify-content-start align-items-center m-3 auto-w image-container"
           >
             <div className="card-container d-flex flex-column">
               <img
