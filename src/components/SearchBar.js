@@ -190,7 +190,7 @@ const SearchBar = (props) => {
         ></input>
         <div className="dropdown fill-year-wrapper">
           <button
-            className="btn btn-secondary dropdown-toggle"
+            className="btn btn-danger dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
