@@ -151,7 +151,7 @@ function App() {
 
   //set app title
   useEffect(() => {
-    document.title = "Movie App";
+    document.title = "EXFILM";
   }, []);
 
   const saveToLS = (items) => {
