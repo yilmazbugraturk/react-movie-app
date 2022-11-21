@@ -10,6 +10,7 @@ import ShowFavourites from "./components/ShowFavourites";
 import ShowWatched from "./components/ShowWatched";
 import AddFavourites from "./components/AddFavourites";
 import RemoveFavourites from "./components/RemoveFavourites";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -17,6 +18,7 @@ function App() {
   const [watched, setWatched] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [fillByYear, setFillByYear] = useState("");
+  const [movieDetails, setMovieDetails] = useState([]);
 
   //method to get movies by title search
   //supports filter by year
@@ -64,7 +66,7 @@ function App() {
   };
 
   //method to get movies by an id
-  const getMovieRequestById = async (searchValue) => {
+  const getMovieRequestById = async (searchValue, isModal) => {
     const url = `http://www.omdbapi.com/?apikey=742147d8&i=${searchValue}&type=movie`;
 
     const response = await fetch(url);
@@ -73,7 +75,14 @@ function App() {
 
     //Check api response
     if (responseJSON.Response === "True") {
-      setMovies([responseJSON]); //always gets one record. force to be sent as array
+      if (isModal) {
+        //is to load data in a model
+        setMovieDetails(responseJSON);
+        //return;
+      } else {
+        //it was loaded by search id
+        setMovies([responseJSON]); //always gets one record. force to be sent as array
+      }
     } else {
       //There was error
       console.log(`There was an error: ${responseJSON.Error}`);
@@ -104,6 +113,13 @@ function App() {
       getMovieRequestById(searchValue);
     }
   }, [searchValue, fillByYear]);
+
+  //get movie details
+  useEffect(() => {
+    if (Array.isArray(movieDetails) && movieDetails.length > 0) {
+      getMovieRequestById(movieDetails.imdbID, true);
+    }
+  }, [movieDetails]);
 
   //set favourites
   useEffect(() => {
@@ -209,6 +225,7 @@ function App() {
           keepFavouritesClick={addFavoriteMovie}
           keepWatchedClick={addWatched}
           favourite={AddFavourites}
+          movie={setMovieDetails}
         />
       </div>
       <ShowFavourites
@@ -221,6 +238,7 @@ function App() {
         watched={removeWatchedMovie}
         keepWatchedClick={addWatched}
       />
+      <MovieDetails details={movieDetails} />
     </div>
   );
 }

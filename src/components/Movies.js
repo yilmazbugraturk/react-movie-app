@@ -21,9 +21,11 @@ const Movies = (props) => {
             <div className="card-container d-flex flex-column">
               <img
                 src={movie.Poster}
-                // onClick={() => {
-                //   props.keepWatchedClick(movie);
-                // }}
+                data-bs-toggle="modal"
+                data-bs-target="#myMovieDetails"
+                onClick={() => {
+                  props.movie(movie);
+                }}
                 onMouseOver={(e) => {
                   e.target.nextElementSibling.style.display = "initial";
                 }}
