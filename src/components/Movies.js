@@ -1,10 +1,16 @@
 import React from "react";
 
+
 const Movies = (props) => {
   const Favourite = props.favourite;
   //if there is movies.. this condition prevent map of undefined/null
   if (Array.isArray(props.movies) && props.movies.length > 0) {
     //returns movie items
+    for(let i=0; i< props.movies.length; i++) {
+      if(props.movies[i].Poster === 'N/A' || props.movies[i].Poster == null || props.movies[i].Poster === ""){
+        props.movies[i].Poster = 'no-picture.jpg'
+      }
+    }
     return (
       <>
         {props.movies.map((movie, i) => (
