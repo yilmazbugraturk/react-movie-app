@@ -20,6 +20,12 @@ const Favourites = (props) => {
                 <h1 className="modal-title fs-5 favourites-title">
                   Favourites
                 </h1>
+                <div
+                  className="alert alert-danger alert-remove-favourites"
+                  role="alert"
+                >
+                  Removed Successfully
+                </div>
               </div>
               <div className="modal-body d-flex flex-row flex-wrap justify-content-between favourites-containerpart">
                 {props.movies.map((movie, i) => (
@@ -74,7 +80,10 @@ const Favourites = (props) => {
                 </h1>
               </div>
               <div className="modal-body d-flex flex-row flex-wrap justify-content-between favourites-containerpart">
-                <p className="no-favourites"> There isn't any favourites yet! :(</p>
+                <p className="no-favourites">
+                  {" "}
+                  There isn't any favourites yet! :(
+                </p>
               </div>
               <div className="modal-footer favourites-containerpart">
                 <button

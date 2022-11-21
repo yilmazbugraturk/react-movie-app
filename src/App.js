@@ -143,6 +143,12 @@ function App() {
     }
     setFavourites(newFavourites);
     saveToLS(newFavourites);
+
+    const alert = document.getElementsByClassName("alert-added-favourites")[0];
+    alert.style.display = "initial";
+    setTimeout(() => {
+      alert.style.display = "none";
+    }, 4000);
   };
 
   const addWatched = (movie) => {
@@ -154,7 +160,11 @@ function App() {
     }
     setWatched(newWatched);
     saveToLSAlreadyWatched(newWatched);
-    console.log(saveToLSAlreadyWatched(newWatched));
+    const alert = document.getElementsByClassName("alert-added-watched")[0];
+    alert.style.display = "initial";
+    setTimeout(() => {
+      alert.style.display = "none";
+    }, 4000);
   };
 
   const removeFavouriteMovie = (movie) => {
@@ -163,6 +173,11 @@ function App() {
     );
     setFavourites(newFavoriteList);
     saveToLS(newFavoriteList);
+    const alert = document.getElementsByClassName("alert-remove-favourites")[0];
+    alert.style.display = "initial";
+    setTimeout(() => {
+      alert.style.display = "none";
+    }, 4000);
   };
 
   const removeWatchedMovie = (movie) => {

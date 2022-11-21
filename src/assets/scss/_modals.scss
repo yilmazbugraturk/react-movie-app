@@ -33,3 +33,22 @@
   font-size: 15px;
   font-weight: 500;
 }
+
+.alert-added-favourites {
+  width: 300px;
+  margin-right: 50px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 0;
+  display: none;
+}
+
+
+.alert-remove-favourites {
+  width: 250px;
+  margin-right: 20px;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 0;
+  display: none;
+}
