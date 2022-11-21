@@ -33,6 +33,10 @@
   width: 92.2%;
 }
 
+.favourites-movies, .watched-movies {
+  width: 100% !important;
+}
+
 .card-container {
   display: flex;
   align-items: center;
