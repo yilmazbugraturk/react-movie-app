@@ -1,10 +1,10 @@
-.favourites-title {
+.favourites-title, .movie-details-title {
   text-align: center;
   padding-left: 16px;
   padding-top: 5px;
 }
 
-.favourites-container {
+.favourites-container, .movie-details-container {
   max-width: 80%;
   &part {
     background-color: #fca311;
@@ -13,7 +13,7 @@
   }
 }
 
-.favourites-close-button {
+.favourites-close-button, .movie-details-close-button {
   background-color: #001219;
 }
 
@@ -59,4 +59,8 @@
   padding: 0;
   margin-bottom: 0;
   display: none;
+}
+
+.details {
+  width: 350px;
 }
