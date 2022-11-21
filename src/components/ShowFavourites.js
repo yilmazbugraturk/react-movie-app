@@ -38,7 +38,7 @@ const Favourites = (props) => {
                     </div>
                     <div
                       onClick={() => props.keepFavouritesClick(movie)}
-                      className="img-overlay d-flex align-items-center justify-content-center"
+                      className="img-overlay movies-overlay favourites-movies d-flex align-items-center justify-content-center"
                     >
                       <Favourite />
                     </div>

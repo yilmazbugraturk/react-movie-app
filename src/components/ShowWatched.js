@@ -32,7 +32,7 @@ const ShowWatched = (props) => {
                     </div>
                     <div
                       onClick={() => props.watched(movie)}
-                      className="img-overlay d-flex align-items-center justify-content-center"
+                      className="img-overlay watched-movies d-flex align-items-center justify-content-center"
                     >
                     <RemoveWatched/>
                     </div>
