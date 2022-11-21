@@ -36,7 +36,7 @@ const Movies = (props) => {
                 xmlns="http://www.w3.org/2000/svg"
                 width="48"
                 height="48"
-                fill="currentColor"
+                fill="#3a0ca3"
                 className="card-container__is-watched bi bi-eye-fill"
                 viewBox="0 0 16 16"
                 onClick={() => {
