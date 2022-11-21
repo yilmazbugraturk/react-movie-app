@@ -19,6 +19,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [fillByYear, setFillByYear] = useState("");
   const [movieDetails, setMovieDetails] = useState([]);
+  const [details, setDetails] = useState([]);
 
   //method to get movies by title search
   //supports filter by year
@@ -89,6 +90,16 @@ function App() {
     }
   };
 
+  const getDetails = async (imdbid) => {
+    const url = `http://www.omdbapi.com/?apikey=742147d8&i=${imdbid}&type=movie`;
+  
+    const response = await fetch(url);
+    const responseJSON = await response.json();
+    console.log(responseJSON);
+    if (responseJSON.Response === "True") {
+      setDetails(responseJSON);
+    }
+  }
   //get movies
   useEffect(() => {
     //get movies by search
@@ -116,9 +127,8 @@ function App() {
 
   //get movie details
   useEffect(() => {
-    if (Array.isArray(movieDetails) && movieDetails.length > 0) {
-      getMovieRequestById(movieDetails.imdbID, true);
-    }
+      getDetails(movieDetails.imdbID);
+      setDetails(movieDetails);
   }, [movieDetails]);
 
   //set favourites
@@ -238,7 +248,7 @@ function App() {
         watched={removeWatchedMovie}
         keepWatchedClick={addWatched}
       />
-      <MovieDetails details={movieDetails} />
+      <MovieDetails details={details} />
     </div>
   );
 }
